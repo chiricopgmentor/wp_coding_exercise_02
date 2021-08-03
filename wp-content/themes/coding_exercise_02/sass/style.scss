@@ -1,0 +1,718 @@
+// ================================================================
+// CSS Custom Property
+// ================================================================
+:root {
+  --heightHeader: 96px;
+}
+// ================================================================
+// Sass Variable
+// ================================================================
+$heightHeader: var(--heightHeader);
+$heightFooter: 80px;
+$widthBezel: 15px;
+$widthLimitOuter: 1200px + $widthBezel * 2;
+$widthLimitInner: 1000px;
+$colorBtnDefault: #f7d43f;
+$colorBlack: #171717;
+$colorWhite: #ffffff;
+$breakpoint: 768px;
+// ================================================================
+// Sass Mixin
+// ================================================================
+@mixin mq {
+  @media screen and (max-width: #{$breakpoint}) {
+    @content;
+  }
+}
+@mixin fontFamily {
+  font-family: "Noto Serif", serif;
+  font-family: "Noto Serif JP", serif;
+}
+// ================================================================
+// Media Query Value
+// ================================================================
+@include mq {
+  :root {
+    --heightHeader: 36px;
+  }
+}
+// ================================================================
+// base
+// ================================================================
+html {
+  font-size: 62.5%;
+}
+body {
+  // font-family: "Noto Serif", serif;
+  // font-family: "Noto Serif JP", serif;
+  @include fontFamily;
+}
+a {
+  text-decoration: none;
+}
+
+// ================================================================
+// layout
+// ================================================================
+.ly_section {
+  &_inner {
+    &__bgi {
+      background: {
+        size: cover;
+        position: center;
+      }
+    }
+  }
+  &__bgi {
+    background: {
+      size: cover;
+      position: center;
+    }
+  }
+}
+.ly_pageWrapper {
+  &__outer {
+    width: 100%;
+    max-width: $widthLimitOuter;
+    position: relative;
+    padding: {
+      right: $widthBezel;
+      left: $widthBezel;
+    }
+    margin: {
+      right: auto;
+      left: auto;
+    }
+  }
+  &__inner {
+    width: 100%;
+    max-width: $widthLimitInner;
+    margin: {
+      right: auto;
+      left: auto;
+    }
+  }
+}
+.ly_header {
+  position: absolute;
+  z-index: 1;
+  height: $heightHeader;
+  width: 100%;
+  @include mq {
+    top: 30px;
+  }
+  &_wrapper {
+    position: relative;
+  }
+  &_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: $widthLimitOuter;
+    padding: {
+      right: $widthBezel;
+      left: $widthBezel;
+    }
+    margin: {
+      right: auto;
+      left: auto;
+    }
+  }
+}
+.ly_footer {
+  height: $heightFooter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ================================================================
+// module
+// ================================================================
+.el_siteTitle {
+  font: {
+    size: 2.6rem;
+    weight: bold;
+    style: italic;
+  }
+  a {
+    color: $colorWhite;
+  }
+}
+.bl_headerNav {
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    li {
+      list-style: none;
+    }
+  }
+  &_link {
+    font: {
+      size: 1.6rem;
+      weight: bold;
+      style: italic;
+    }
+    color: $colorWhite;
+  }
+}
+.bl_humburgerBtn {
+  position: fixed;
+  top: 33px;
+  right: 15px;
+  height: 30px;
+  width: 30px;
+  z-index: 3;
+  border-style: none;
+  background: none;
+  &_bar {
+    position: absolute;
+    left: 0;
+    height: 3px;
+    width: 30px;
+    background: $colorWhite;
+    &__top {
+      transform: translate(0px, -10px);
+      transition: 0.3s;
+    }
+    &__mid {
+      opacity: 1;
+      transition: 0.3s;
+    }
+    &__btm {
+      transform: translate(0px, 10px);
+      transition: 0.3s;
+    }
+  }
+}
+.bl_bgiCarousel {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  &_wrapper {
+    position: relative;
+    z-index: -1;
+  }
+  &_img {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+.bl_copy {
+  position: absolute;
+  bottom: 22.67%;
+  @include mq {
+    position: static;
+  }
+  &_wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    @include mq {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &_main {
+    font: {
+      size: 7rem;
+      weight: bold;
+    }
+    @include mq {
+      font: {
+        size: 3.7rem;
+      }
+      text-align: center;
+    }
+    color: $colorWhite;
+    margin: 0;
+  }
+  &_sub {
+    font: {
+      size: 4rem;
+      weight: bold;
+    }
+    color: $colorWhite;
+    margin: 0;
+    transform: translateX(1em);
+    @include mq {
+      font: {
+        size: 3rem;
+      }
+      transform: none;
+      text-align: center;
+    }
+  }
+}
+.el_sectionTitle {
+  font: {
+    size: 6rem;
+    weight: bold;
+    style: italic;
+  }
+  margin: {
+    top: 100px;
+    bottom: 80px;
+  }
+  @include mq {
+    font: {
+      size: 3rem;
+    }
+  }
+  &_wrapper {
+    display: flex;
+    &__vCenter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+    }
+  }
+  &__rightDash {
+    display: inline-flex;
+    align-items: center;
+    &::after {
+      content: "";
+      background: currentColor;
+      width: 3.33em;
+      height: 0.05em;
+      margin: {
+        left: 1em;
+      }
+      @include mq {
+        height: 0.15em;
+        margin: {
+          left: 1.5em;
+        }
+      }
+    }
+  }
+}
+.el_sectionLead {
+  font: {
+    size: 3rem;
+    weight: bold;
+  }
+  text-align: center;
+  margin: 0;
+  @include mq {
+    font: {
+      size: 2rem;
+    }
+  }
+}
+.bl_media {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include mq {
+    display: block;
+  }
+  &_text {
+    font: {
+      size: 1.6rem;
+      weight: bold;
+    }
+    width: 44%;
+    @include mq {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  &_img {
+    width: 44%;
+    @include mq {
+      width: 100%;
+    }
+  }
+}
+.el_bgText {
+  font: {
+    size: 9rem;
+    weight: bold;
+  }
+  color: rgb(23 23 23 / 5%);
+  margin: {
+    top: 70px;
+    bottom: 0;
+  }
+  padding: {
+    bottom: 70px;
+  }
+  @include mq {
+    font: {
+      size: 4rem;
+    }
+    margin: {
+      top: 40px;
+    }
+    padding: {
+      bottom: 40px;
+    }
+  }
+  &_wrapper {
+    display: flex;
+  }
+}
+.bl_cardUnit {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  @include mq {
+    flex-direction: column;
+  }
+  li {
+    list-style: none;
+    margin: {
+      right: 20px;
+    }
+    @include mq {
+      margin: {
+        right: 0;
+        bottom: 30px;
+      }
+    }
+    &:last-of-type {
+      margin: {
+        right: 0;
+      }
+      @include mq {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+.bl_card {
+  &_img {
+    width: 100%;
+    object-fit: cover;
+  }
+  &_text {
+    font: {
+      size: 1.6rem;
+    }
+    background-color: $colorWhite;
+    margin: 0;
+    padding: 8%;
+  }
+}
+.bl_bannerUnit {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  @include mq {
+    flex-direction: column;
+  }
+  li {
+    list-style: none;
+    width: 100%;
+    @include mq {
+      margin: {
+        bottom: 30px;
+      }
+    }
+  }
+  @include mq {
+    li:last-of-type {
+      margin: {
+        bottom: 0;
+      }
+    }
+  }
+  // &__fullWidth {
+  //   width: 100vw;
+  //   margin: {
+  //     right: calc(50% - 50vw);
+  //     left: calc(50% - 50vw);
+  //   }
+  // }
+}
+.bl_banner {
+  position: relative;
+  &:hover {
+    .bl_banner_img {
+      filter: brightness(50%);
+    }
+  }
+  &_img {
+    width: 100%;
+    object-fit: cover;
+  }
+  &_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $colorWhite;
+    font: {
+      size: 4rem;
+      weight: bold;
+      style: italic;
+    }
+    white-space: nowrap;
+  }
+}
+.el_contactMsg {
+  font: {
+    size: 2rem;
+    weight: bold;
+  }
+  text-align: center;
+  color: $colorWhite;
+  margin: 0;
+}
+.el_btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el_btn {
+  display: block;
+  height: 60px;
+  width: 235px;
+  font: {
+    size: 1.6rem;
+    weight: bold;
+  }
+  color: $colorBlack;
+  background-color: $colorBtnDefault;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 30px;
+  box-shadow: 0 0 8px;
+  transition: 0.3s;
+  &:hover,
+  &:focus {
+    letter-spacing: 0.3em;
+    transition: 0.3s;
+  }
+  &:active {
+    color: $colorWhite;
+    transition: 0.3s;
+  }
+  &__submit {
+    @include fontFamily;
+    border: {
+      style: none;
+    }
+    cursor: pointer;
+  }
+}
+.el_creditTxt {
+  font: {
+    size: 1.4rem;
+    weight: bold;
+  }
+}
+.bl_contactForm {
+  display: flex;
+  flex-direction: column;
+  &_wrapper {
+    max-width: 700px;
+    width: 100%;
+    margin: {
+      top: 97px;
+      right: auto;
+      bottom: 80px;
+      left: auto;
+    }
+  }
+  &_label {
+    font-size: 1.6rem;
+    margin: {
+      bottom: 5px;
+    }
+  }
+  &_chkbox {
+    cursor: pointer;
+    margin: {
+      right: 10px;
+    }
+    @include mq {
+      margin: {
+        left: 0;
+      }
+    }
+    &Unit {
+      display: flex;
+      margin: {
+        bottom: 22px;
+      }
+      @include mq {
+        flex-direction: column;
+      }
+      *:first-child {
+        margin: {
+          left: 0px;
+        }
+      }
+    }
+    &_wrapper {
+      margin: {
+        left: 20px;
+      }
+      @include mq {
+        margin: {
+          left: 0;
+        }
+      }
+      .bl_contactForm_label {
+        cursor: pointer;
+      }
+    }
+  }
+  &_inputBox {
+    height: 30px;
+    font: {
+      size: 1.6rem;
+    }
+    @include fontFamily;
+    margin: {
+      bottom: 22px;
+    }
+  }
+  &_inputArea {
+    height: 170px;
+    font: {
+      size: 1.6rem;
+    }
+    @include fontFamily;
+    margin: {
+      bottom: 80px;
+    }
+    padding: 5px;
+  }
+}
+// ================================================================
+// helper
+// ================================================================
+.hp_mt280 {
+  margin-top: 280px !important;
+}
+.hp_mb25 {
+  margin-bottom: 25px !important;
+}
+.hp_mb40 {
+  margin-bottom: 40px !important;
+}
+.hp_mb60 {
+  margin-bottom: 60px !important;
+}
+.hp_mb80 {
+  margin-bottom: 80px !important;
+}
+.hp_pb40 {
+  padding-bottom: 40px !important;
+}
+.hp_white {
+  color: $colorWhite !important;
+}
+.hp_bgWhite {
+  color: rgb(255 255 255 / 5%) !important;
+}
+.hp_right {
+  justify-content: flex-end !important;
+}
+.hp_center {
+  justify-content: center !important;
+}
+.pc_only {
+  @include mq {
+    display: none !important;
+  }
+}
+.sp_only {
+  display: none !important;
+  @include mq {
+    display: block !important;
+  }
+}
+.hp_mt256__sp {
+  @include mq {
+    margin-top: 256px !important;
+  }
+}
+.hp_mb13__sp {
+  @include mq {
+    margin-bottom: 13px !important;
+  }
+}
+.hp_mb30__sp {
+  @include mq {
+    margin-bottom: 30px !important;
+  }
+}
+.hp_mb50__sp {
+  @include mq {
+    margin-bottom: 50px !important;
+  }
+}
+.hp_pb64__sp {
+  @include mq {
+    padding-bottom: 64px !important;
+  }
+}
+// ================================================================
+// Program
+// ================================================================
+.js_body.is_noScroll {
+  overflow: hidden;
+}
+.js_header.is_sticky {
+  position: fixed;
+  background: rgb(40 47 53 / 80%);
+  transition: 0.3s;
+}
+.js_headerNav.is_close {
+  display: none;
+}
+.js_headerNav.is_spMenuOpen {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgb(40 47 53 / 80%);
+  ul {
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    li {
+      margin: {
+        bottom: 30px;
+      }
+      &:last-of-type {
+        margin: {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+.js_humburgerBtn.is_cross {
+  .js_humburgerBtn_bar__top {
+    transform: rotate(0.125turn);
+    transition: 0.3s;
+  }
+  .js_humburgerBtn_bar__mid {
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .js_humburgerBtn_bar__btm {
+    transform: rotate(-0.125turn);
+    transition: 0.3s;
+  }
+}
