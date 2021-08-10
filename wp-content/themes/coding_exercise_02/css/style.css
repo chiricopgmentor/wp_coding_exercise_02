@@ -127,6 +127,8 @@ a {
   font-size: 1.6rem;
   font-weight: bold;
   font-style: italic;
+}
+.bl_headerNav_link a {
   color: #ffffff;
 }
 

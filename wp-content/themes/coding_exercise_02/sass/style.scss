@@ -156,7 +156,9 @@ a {
       weight: bold;
       style: italic;
     }
-    color: $colorWhite;
+    a {
+      color: $colorWhite;
+    }
   }
 }
 .bl_humburgerBtn {
